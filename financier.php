@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 
 /*
@@ -17,7 +18,7 @@
 
 // Financier ASCII logo; made by patorjk with figlet.js (github.com/patorjk/figlet.js)
 $logo = <<<HEREDOC
-______  _                        _
+_______ _                        _
 |  ____(_)                      (_)
 | |__   _ _ __   __ _ _ __   ___ _  ___ _ __
 |  __| | | '_ \ / _` | '_ \ / __| |/ _ \ '__|
@@ -26,7 +27,7 @@ ______  _                        _
 HEREDOC;
 
 // define financier.php version
-define('VERSION', '0.1.2');
+define('VERSION', '0.1.3');
 
 // define script banner
 $banner = $logo . ' v' . VERSION . "\n\n";
@@ -50,7 +51,7 @@ function get_global_data() {
     // close curl resource to free up server resources
     curl_close($ch);
 
-    // decode JSON output from line 49, and assign it to a new variable
+    // decode JSON output and assign it to a new variable
     $decoded_json = json_decode($encoded_json, true);
     $global_data  = $decoded_json;
 
