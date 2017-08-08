@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 # Further features to be added accordingly
 -Updated README
 
+## [0.1.1] - 2017-09-08
+### Fixed
+-Fixed comment mistake on line 53, which referenced a wrong line number
+
 ## [0.1.0] - 2017-09-07
 ### Added
 -financier.php

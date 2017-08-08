@@ -50,7 +50,7 @@ function get_global_data() {
     // close curl resource to free up server resources
     curl_close($ch);
 
-    // decode JSON output from line 10, and assign it to a new variable
+    // decode JSON output from line 49, and assign it to a new variable
     $decoded_json = json_decode($encoded_json, true);
     $global_data  = $decoded_json;
 
