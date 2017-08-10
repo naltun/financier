@@ -16,7 +16,7 @@
 ** Developed by Noah Altunian (github.com/naltun)
 */
 
-// Financier ASCII logo; made by patorjk with figlet.js (github.com/patorjk/figlet.js)
+// Financier ASCII logo; made with figlet.js (github.com/patorjk/figlet.js)
 $logo = <<<HEREDOC
 _______ _                        _
 |  ____(_)                      (_)
@@ -27,26 +27,63 @@ _______ _                        _
 HEREDOC;
 
 // define financier.php version
-define('VERSION', '0.1.3');
+define('VERSION', '0.2.0');
 
 // define script banner
 $banner = $logo . ' v' . VERSION . "\n\n";
 
 // web request URL link as a constant
-define('REQ_URL', 'https://api.coinmarketcap.com/v1/global/');
+// for the get_global_data() function
+define('GLOBAL_DATA__URL', 'https://api.coinmarketcap.com/v1/global/');
 
-// define `clear screen' function for readability
+// define function to clear screen before each get_global_data() update for readability
 function clear_screen() { echo exec('clear'); }
+
+// define function to display a list of currencies and accompanying data if the user supplies an argument to the script
+// NOTE: There is a maximum number of currencies that can be displayed. A possible work-around for this
+// is to allow a curses-like scroll functionality. Financier currently supports a ticker limit of 7
+if ( isset( $argv[1] ) and is_numeric( $argv[1] )) {
+    // set ticker limit as a variable
+    ( $argv[1] <= 7 ) ? $ticker_limit = $argv[1] : $ticker_limit = 7;
+
+    // web request URL link as a constant for retrieve_currency_data() function
+    define('TICKER_URL', 'https://api.coinmarketcap.com/v1/ticker/?limit=' . $ticker_limit);
+
+    function get_currency_data() {
+        // init curl session
+        $ch = curl_init();
+        // set the file for transfer
+        curl_setopt($ch, CURLOPT_URL, TICKER_URL);
+        // return the file as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // set the encoded string for output
+        $encoded_json = curl_exec($ch);
+        // close curl resource to free up server resources
+        curl_close($ch);
+
+        // decode JSON output and asssign to a new variable
+        $decoded_json  = json_decode($encoded_json, true);
+        $currency_data = $decoded_json;
+
+        foreach( $currency_data as $key => $value )
+        {
+          echo 'Currency:     '  . $value['name']      . "\n";
+          echo 'Symbol:       '  . $value['symbol']    . "\n";
+          echo 'Rank:         '  . $value['rank']      . "\n";
+          echo 'Price (USD):  $' . number_format($value['price_usd'], 4) . "\n\n";
+        }
+    }
+}
 
 // define function to obtain and display cryptocurrency market, `global' data
 function get_global_data() {
     // init curl session
     $ch = curl_init();
     // set the file for transfer
-    curl_setopt($ch, CURLOPT_URL, REQ_URL);
-    //return the file as a string
+    curl_setopt($ch, CURLOPT_URL, GLOBAL_DATA__URL);
+    // return the file as a string
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    // set up the encoded-string for output
+    // set the encoded-string for output
     $encoded_json = curl_exec($ch);
     // close curl resource to free up server resources
     curl_close($ch);
@@ -73,6 +110,10 @@ while(TRUE) {
     clear_screen();
     echo $banner;
     get_global_data();
+    if ( function_exists( 'get_currency_data' ) ) {
+        echo "Displaying Top $ticker_limit currencies\n\n";
+        get_currency_data();
+    }
     // make the script sleep for 1 minute, then make a new `get_global_data()' call
     sleep(60);
 
