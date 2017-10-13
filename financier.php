@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 <?php
 
 /*
@@ -27,7 +27,7 @@ _______ _                        _
 HEREDOC;
 
 // define financier.php version
-define('VERSION', '0.2.0');
+define('VERSION', '0.2.1');
 
 // define script banner
 $banner = $logo . ' v' . VERSION . "\n\n";

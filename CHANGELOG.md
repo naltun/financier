@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 # Further features to be added accordingly
 -Updated README
+-Add ncurses function
+
+## [0.2.1] - 2017-10-13
+### Changed
+-Changed the shebang line from `/usr/bin/php` to `/usr/bin/env php` (the better way). I also changed the changelog to a Markdown file, and I updated the Unreleased 
+section to include `ncurses` functionality.
 
 ## [0.2.0] - 2017-09-09
 ### Added
