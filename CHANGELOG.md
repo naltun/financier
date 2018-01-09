@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 # Further features to be added accordingly
 -Updated README
 -Add ncurses function
+-Add a script argument that allows a user to *only* view a certain coin's statistics, eg:
+	$ financier [-o/--only-display=] reddcoin
+
+Doing so will _also_ display global statistics
+
+## [0.2.2] - 2018-01-09
+### Added
+-Added an an unreleased feature in CHANGELOG, which will allow a user specify a script argument to suppress coin statistics except _only_ for the specified coin
 
 ## [0.2.1] - 2017-10-13
 ### Changed

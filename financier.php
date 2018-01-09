@@ -27,7 +27,7 @@ _______ _                        _
 HEREDOC;
 
 // define financier.php version
-define('VERSION', '0.2.1');
+define('VERSION', '0.2.2');
 
 // define script banner
 $banner = $logo . ' v' . VERSION . "\n\n";
