@@ -17,6 +17,10 @@ Doing so will _also_ display global statistics
 	argument, eg:
 	$ financier [-c/--compare]
 
+## [0.2.4] - 2018-02-27
+### Added
+- Method of exiting cleanly (exit code '0') from Financier with ctrl-C.
+
 ## [0.2.3] - 2018-02-07
 ### Added
 -Added an unreleased feature in CHANGELOG, which will allow a user to specify a script argument to display positive/negative gains as a comparison to previously-
@@ -28,7 +32,7 @@ returned values
 
 ## [0.2.1] - 2017-10-13
 ### Changed
--Changed the shebang line from `/usr/bin/php` to `/usr/bin/env php` (the better way). I also changed the changelog to a Markdown file, and I updated the Unreleased 
+-Changed the shebang line from `/usr/bin/php` to `/usr/bin/env php` (the better way). I also changed the changelog to a Markdown file, and I updated the Unreleased
 section to include `ncurses` functionality.
 
 ## [0.2.0] - 2017-09-09

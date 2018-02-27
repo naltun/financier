@@ -27,7 +27,7 @@ _______ _                        _
 HEREDOC;
 
 // define financier.php version
-define('VERSION', '0.2.3');
+define('VERSION', '0.2.4');
 
 // define script banner
 $banner = $logo . ' v' . VERSION . "\n\n";
@@ -103,10 +103,23 @@ function get_global_data() {
 
 }
 
+// Exit cleanly from Financier with ctrl-C
+declare(ticks = 1);
+
+pcntl_signal(SIGINT, 'handle_signal');
+
+function handle_signal($signal) {
+  switch($signal)
+  {
+    case SIGINT:
+      echo "\nGood luck. Exiting...\n";
+      exit(0);
+  }
+}
+
 // loop forever until the script is stopped
 // display data in the mean time
 while(TRUE) {
-
     clear_screen();
     echo $banner;
     get_global_data();
@@ -114,7 +127,7 @@ while(TRUE) {
         echo "Displaying Top $ticker_limit currencies\n\n";
         get_currency_data();
     }
+
     // make the script sleep for 1 minute, then make a new `get_global_data()' call
     sleep(60);
-
 }
