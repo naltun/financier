@@ -27,7 +27,7 @@ _______ _                        _
 HEREDOC;
 
 // define financier.php version
-define('VERSION', '0.2.4');
+define('VERSION', '0.2.5');
 
 // define script banner
 $banner = $logo . ' v' . VERSION . "\n\n";
@@ -112,7 +112,7 @@ function handle_signal($signal) {
   switch($signal)
   {
     case SIGINT:
-      echo "\nGood luck. Exiting...\n";
+      echo "\nExiting... Good luck.\n";
       exit(0);
   }
 }

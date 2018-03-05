@@ -17,6 +17,10 @@ Doing so will _also_ display global statistics
 	argument, eg:
 	$ financier [-c/--compare]
 
+## [0.2.5] - 2018-03-05
+### Changed
+- Message displayed when a user exits via ctrl-C
+
 ## [0.2.4] - 2018-02-27
 ### Added
 - Method of exiting cleanly (exit code '0') from Financier with ctrl-C.
