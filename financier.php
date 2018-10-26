@@ -27,14 +27,14 @@ _______ _                        _
 HEREDOC;
 
 // define financier.php version
-define('VERSION', '0.2.5');
+define('VERSION', '0.2.6');
 
 // define script banner
 $banner = $logo . ' v' . VERSION . "\n\n";
 
 // web request URL link as a constant
 // for the get_global_data() function
-define('GLOBAL_DATA__URL', 'https://api.coinmarketcap.com/v1/global/');
+define('GLOBAL_DATA_URL', 'https://api.coinmarketcap.com/v1/global/');
 
 // define function to clear screen before each get_global_data() update for readability
 function clear_screen() { echo exec('clear'); }
@@ -80,7 +80,7 @@ function get_global_data() {
     // init curl session
     $ch = curl_init();
     // set the file for transfer
-    curl_setopt($ch, CURLOPT_URL, GLOBAL_DATA__URL);
+    curl_setopt($ch, CURLOPT_URL, GLOBAL_DATA_URL);
     // return the file as a string
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     // set the encoded-string for output

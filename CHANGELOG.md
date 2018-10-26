@@ -17,6 +17,10 @@ Doing so will _also_ display global statistics
 	argument, eg:
 	$ financier [-c/--compare]
 
+## [0.2.6] - 2018-10-26
+### Changed
+- Constant GLOBAL_DATA_URL was written with two underscores in between DATA and URL (eg. GLOBAL_DATA__URL). The second `_' has been removed.
+
 ## [0.2.5] - 2018-03-05
 ### Changed
 - Message displayed when a user exits via ctrl-C
